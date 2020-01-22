@@ -1,13 +1,14 @@
-from urllib.parse import parse_qs, quote_plus
-from future.standard_library import install_aliases
-from botocore.vendored import requests
 import getopt
 import logging
-import sys
 import os
-from dotenv import load_dotenv
-load_dotenv()
+import sys
+from urllib.parse import parse_qs, quote_plus
 
+from botocore.vendored import requests
+from dotenv import load_dotenv
+from future.standard_library import install_aliases
+
+load_dotenv()
 
 install_aliases()
 
@@ -110,11 +111,7 @@ def sort_query_string(query_string):
     return sorted_query_string
 
 
-###############################################################################
-# main                                                                        #
-###############################################################################
-if __name__ == "__main__":
-
+def start():
     opts = parse_options(sys.argv[1:])
 
     if not opts:
@@ -149,3 +146,10 @@ if __name__ == "__main__":
     print('\nRESPONSE++++++++++++++++++++++++++++++++++++')
     print('Response code: %d\n' % r.status_code)
     print(r.text)
+
+
+###############################################################################
+# main                                                                        #
+###############################################################################
+if __name__ == "__main__":
+    start()
